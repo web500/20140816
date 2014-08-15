@@ -1,0 +1,194 @@
+@charset "utf-8";
+
+/* フルードイメージ */
+img {
+	max-width: 100%;
+	height: auto;
+}
+body {
+	margin: 20px 10px;
+	font-family: 'メイリオ', 'Hiragino Kaku Gothic Pro', sans-serif;
+	color: #666;
+	line-height: 1; /* 追加（行間調節のため） */
+}
+header, footer, nav, aside, article, section, figure {
+	display: block;
+}
+
+/* ラップ */
+#wrap {
+	width: 960px;
+	margin: 0 auto;
+}
+
+/* ヘッダー */
+#site {
+	float: left;
+	margin: -10px 0 10px;
+	width: 100%;
+	max-width: 710px; /* 追加（IEでのズレ防止のため、720を710に変更） */
+}
+#site h1 {
+	margin: 0; /* 追加（間延び防止） */
+	padding: 0; /* 追加（間延び防止） */
+	line-height: 1;
+	color: #FFCCCC;
+	font-family: 'Lobster', cursive, Helvetica, Arial, sans-serif;
+	font-size: 40px;
+}
+#site h1 span {
+	color: #99CCCC;
+}
+/* アイコンメニュー */
+#iconmenu {
+	float: right;
+	text-align: right;
+}
+#iconmenu ul {
+	margin: 0 0 10px 0;
+}
+#iconmenu li {
+	display: inline;
+	list-style-type: none;
+	margin-right: 6px;
+}
+#iconmenu a {
+	text-decoration: none;
+}
+#iconmenu img {
+	border: none;
+}
+/* ヘッダー画像 */
+#headerimg img {
+	vertical-align: bottom;
+}
+
+/* 目次 */
+nav {
+	margin-bottom: 30px;
+	font-family: 'Press Start 2P', cursive, Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	border-top: solid 1px #fff;
+	background-color: #99cccc;
+}
+nav ul {
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+nav li {
+	list-style-type: none;
+	float: left;
+}
+nav li a {
+	display: block;
+	width: 120px;
+	padding: 10px 0;
+	border-right: solid 1px #fff;
+	color: #fff;
+	text-align: center;
+	text-decoration: none;
+}
+nav li.on a, nav li a:hover {
+	background-color: #ffcccc;
+}
+
+/* 本文 */
+article {
+	width: 600px;
+	float: left;
+}
+section {
+	margin-bottom: 40px;
+}
+article h2 {
+	font-size: 28px;
+	border-bottom: solid 1px #aaa;
+	margin: 0 0 5px;
+	padding: 0 0 3px;
+}
+article p {
+	line-height: 1.5;
+	margin: 6px 0 0 0;
+}
+figure {
+	margin: 10px 0 0 0;
+}
+figcaption {
+	width: 86%;
+	margin: 0 auto 20px auto;
+	padding: 0;
+	text-align: center;
+	font-size: 8px;
+	line-height: 1;
+	color: #CCC;
+}
+article section h3 {
+	margin: 0 0 20px 0;
+	padding: 8px 0 8px 36px;
+	font-family: 'Press Start 2P', cursive, Helvetica, Arial, sans-serif;
+	font-size: 22px;
+	color: #fff;
+	background: #B5CEE1 url(../img/listmark.png) no-repeat 1% 60%;
+}
+
+/* 補足要素 */
+aside {
+	width: 300px;
+	float: right; 
+	margin-bottom: 50px;
+}
+/* メニュー */
+.menu {
+	margin-bottom: 50px;
+}
+.menu h3 {
+	font-family: 'Lobster', cursive, Helvetica, Arial, sans-serif;
+	font-size: 26px;
+	color: #deb887;
+	margin-bottom: 5px;
+}
+.menu ul {
+	border-top: solid 1px #aaa;
+    padding: 0;
+}
+.menu li {
+	list-style-type: none;
+	border-bottom: solid 1px #aaa;
+}
+.menu li a {
+	display: block;
+	font-size: 14px;
+	text-decoration: none;
+	color: #666;
+	padding: 10px 0 10px 34px;
+	background-image: url(../img/listmark.png);
+	background-repeat: no-repeat;
+	background-position: 6px 6px;
+}
+.menu li a:hover{
+	background-color: #fef4f4;
+}
+
+/* フッター */
+footer {
+	clear: both;
+	font-family: 'Maven Pro', Helvetica, Arial, sans-serif;
+	color: #fff;
+	background-color: #666;
+	padding: 10px; /* 追加（幅を細めに変更） */
+}
+footer p {
+	margin: 0; /* 追加（間延び防止） */
+	padding: 0; /* 追加（間延び防止） */
+	margin-bottom: 4px;
+}
+footer p a {
+	font-size: 90%;
+	color: #fff;
+}
+footer small {
+	font-size: 12px;
+	font-weight: bold;
+	display: block;
+}

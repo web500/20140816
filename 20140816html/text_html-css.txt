@@ -1,0 +1,219 @@
+﻿不具合を起こさないための設定いろいろ
+
+●CSS（スケーディング・スタイル・シート）は、HTMLからリンクを貼られることで生きます。
+CSSの「フォルダ名/ファイル名」の階層に注意！
+
+・HTMLに…
+---
+<link rel="stylesheet" href="css/style.css">
+---
+
+●Webフォントの設定
+今回は、GoogleFontsから引っ張っています。
+https://www.google.com/fonts にアクセス→任意のフォント→Quick-use→HTMLコードとCSSをコピー→貼り付け
+
+・HTMLのMATAタグ内には…
+---
+<link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Press+Start+2P' rel='stylesheet' type='text/css'>
+---
+
+・CSSには…
+---
+font-family: 'Lobster', cursive;
+font-family: 'Press Start 2P', cursive;
+---
+
+●古いブラウザでホームページを見るユーザがいることも考慮するなら…
+コメントタグで「もし、IE9以下のユーザには～」として、レスポンシブWebデザインで対応する。
+respond.jsとhtml5shiv.jsをMATAタグで指定するだけで何とかなる。。。はず。
+
+・HTMLのMETA内（titleの下辺りでよい）
+---
+<link rel="stylesheet" href="css/html5reset-1.6.1.css">
+<link rel="stylesheet" href="css/style.css">
+---
+---
+<!--[if lt IE 9]>
+<script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<script src="js/respond.js"></script>
+<![endif]-->
+---
+
+※「js」というフォルダを作成して、次の2つのファイルを置く。（jsセットとして保管しておくとよい）
+・respond.js
+・html5shiv.js
+
+
+
+～～～～～～～～～
+ここから下は、前回のつづき（CSSの設定）です。
+「目次」以前のCSS設定は、前回のファイル（https://github.com/web500/20140809）をご参考ください。
+
+
+
+●目次
+ナビ全体は左寄せだが、各メニューの文字は枠の中で真ん中寄せにする。
+文字フォントにはGoogleウェブフォント「Press Start 2P」を読み込む。
+ナビ（リスト）は横並びだが、インライン要素ではなくブロックレベル要素を使う。
+（リンクの範囲＜a href～＞をブロックに変換する。幅・高さもここで指定する。）
+子要素（li）でfloatを指定した場合、親要素（ul）にoverflow: hidden;を入れると上手くいく。
+---
+nav {
+	margin-bottom: 30px;
+	font-family: 'Press Start 2P', cursive, Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	border-top: solid 1px #fff;
+	background-color: #99cccc;
+}
+nav ul {
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+nav li {
+	list-style-type: none;
+	float: left;
+}
+nav li a {
+	display: block;
+	width: 120px;
+	padding: 10px 0;
+	border-right: solid 1px #fff;
+	color: #fff;
+	text-align: center;
+	text-decoration: none;
+}
+nav li.on a, nav li a:hover{
+	background-color: #ffcccc;
+}
+---
+
+●本文（アーティクル全体）
+右にアサイドがくることを考慮して、左寄せで600pxにする。
+line-heightで文章の行間を整える。※ちなみに文字間はletter-spacing:**px;を使う。
+---
+article {
+	width: 600px;
+	float: left;
+}
+article h2 {
+	font-size: 28px;
+	border-bottom: solid 1px #aaa;
+	margin: 0 0 5px;
+	padding: 0 0 3px;
+}
+article p {
+	line-height: 1.5;
+	margin: 6px 0px 0px 0px;
+}
+---
+
+●本文（フィギュア関係）
+キャプションは控えめに（全体幅の86％。文字サイズは小さく、文字カラーも薄めにする。）
+---
+figure {
+	margin: 10px 0px 0px 0px;
+}
+figcaption {
+	width: 86%;
+	margin: 0px auto 20px auto;
+	padding: 0px;
+	text-align: center;
+	font-size: 8px;
+	line-height: 1;
+	color: #CCC;
+}
+---
+
+●本文（セクション関係）
+小見出しの頭にクッキーのイラストを入れる。
+※画像は通常、HTMLにimgで設置するが、ここでは繰り返さない背景として設置する。
+---
+section {
+	margin-bottom: 40px;
+}
+article section h3 {
+	margin: 0px 0px 20px 0px;
+	padding: 8px 0px 8px 36px;
+	font-family: 'Press Start 2P', cursive, Helvetica, Arial, sans-serif;
+	font-size: 22px;
+	color: #fff;
+	background: #B5CEE1 url(../img/listmark.png) no-repeat 1% 60%;
+}
+---
+
+●補足要素（アサイド）
+左に600px枠の本文があるので、右寄せで300pxとする。
+※960px－（600px＋300px）＝？？？
+---
+aside {
+	width: 300px;
+	float: right; 
+	margin-bottom: 50px;
+}
+---
+
+●アサイド内のメニュー
+メニューは2つあるが、同じ設定にして統一感を持たせる。（設定は1つでよい）
+セクション同様、メニューの頭にクッキーのイラストを入れるが、今回はbackground-positionをpxで指定する。
+メニューにマウスが乗ったとき色が変わるようa:hoverを設定する。
+---
+.menu {
+	margin-bottom: 50px;
+}
+.menu h3 {
+	font-family: 'Lobster', cursive, Helvetica, Arial, sans-serif;
+	font-size: 26px;
+	color: #deb887;
+	margin-bottom: 5px;
+}
+.menu ul {
+	margin: 0;
+	padding: 0;
+	border-top: solid 1px #aaa;
+}
+.menu li {
+	list-style-type: none;
+	border-bottom: solid 1px #aaa;
+}
+.menu li a {
+	display: block;
+	font-size: 14px;
+	text-decoration: none;
+	color: #666;
+	padding: 10px 0 10px 34px;
+	background-image: url(../img/listmark.png);
+	background-repeat: no-repeat;
+	background-position: 6px 6px;
+}
+.menu li a:hover{
+	background-color: #fef4f4;
+}
+---
+
+●フッター
+clear: both;で回り込みを解除する。
+コピーライト（著作権表示）は控えめに。文字サイズを％,px,em,remで試してみる。
+---
+footer {
+	clear: both;
+	font-family: 'Maven Pro', Helvetica, Arial, sans-serif;
+	color: #fff;
+	background-color: #888;
+	padding: 10px 10px 20px;
+}
+footer p {
+	margin: 0;
+	padding: 0;
+	margin-bottom: 4px;
+}
+footer p a {
+	font-size: 90%;
+	color: #fff;
+}
+footer small {
+	font-size: 12px;
+	font-weight: bold;
+	display: block;
+}
